@@ -1,0 +1,12 @@
+# Terraform
+.terraform
+*.tfstate
+*.tfstate.backup
+.terragrunt-cache
+*/terraform.tfvars
+terraform/terraform-modules/
+# Ignore IDE specific files
+.idea/
+.vscode/
+*.sw*
+
