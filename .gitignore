@@ -5,6 +5,7 @@
 .terragrunt-cache
 */terraform.tfvars
 terraform/terraform-modules/
+terraform/terraform-blueprints/
 # Ignore IDE specific files
 .idea/
 .vscode/
