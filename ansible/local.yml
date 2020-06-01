@@ -1,4 +1,4 @@
-- hosts: cloudops
+- hosts: tag_Name_app_asg
   become: yes
   roles:
     - role: deploy

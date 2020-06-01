@@ -1,4 +1,4 @@
-[tag_Name_cloudops_bastion]
+[tag_Name_app_asg]
 
 [cloudops:children]
-tag_Name_cloudops_bastion
+tag_Name_app_asg
