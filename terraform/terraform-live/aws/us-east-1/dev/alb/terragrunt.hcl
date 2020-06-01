@@ -4,11 +4,13 @@ terraform {
 include {
     path = find_in_parent_folders()
 }
+
 inputs = {
-    name            = "cloudops-alb"
-    listener_port   = "80"
+    name            = "cloudops-app"
+    instance_type   = "t3.micro"
     bucket          = "cloudops-terragrunt-tfstate-052020"
     bucket_key      = "dev/vpc/terraform.tfstate"
+    key_name        = "cloudops-dev"
 
     ingress_rules = [
         {
