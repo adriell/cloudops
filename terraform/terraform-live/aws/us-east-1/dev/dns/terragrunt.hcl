@@ -1,5 +1,5 @@
 terraform {
-    source = "../../../../../terraform-blueprints/terraform-blueprint-dns"
+    source = "git::ssh://git@github.com/adriell/terraform-blueprints.git//terraform-blueprint-dns"
 }
 include {
     path = find_in_parent_folders()
