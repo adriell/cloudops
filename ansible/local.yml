@@ -1,0 +1,4 @@
+- hosts: cloudops
+  become: yes
+  roles:
+    - role: deploy

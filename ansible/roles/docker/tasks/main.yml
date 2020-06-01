@@ -1,0 +1,15 @@
+- name: Install Docker
+  yum:
+    name:
+        - docker
+    state: present
+
+- name: Install Docker Module for Python
+  pip:
+    name: docker-py
+
+- name: Start services
+  service:
+    name: docker
+    state: started
+    enabled: yes

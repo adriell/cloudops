@@ -1,0 +1,27 @@
+- name: Remove OLD JDK
+  yum:
+    name: java-1.7.0
+  state: remove
+- name: Install JDK
+  yum:
+    name:
+        - java-1.8.0
+    state: present
+- name: Install repo jenkins
+  yum_repository:
+    name: jenkins
+    description: jenkins
+    baseurl: http://pkg.jenkins.io/redhat
+    gpgcheck: no
+
+- name: Install Jenkins
+  yum:
+    name:
+        - jenkins
+    state: present
+
+- name: Start services
+  service:
+    name: jenkins
+    state: started
+    enabled: yes
