@@ -10,4 +10,5 @@ terraform/terraform-blueprints/
 .idea/
 .vscode/
 *.sw*
-
+# Ansible 
+ansible/.ansible-facts-fact_cach
