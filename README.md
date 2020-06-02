@@ -3,7 +3,9 @@
 Esta é uma implementação de uma arquitetura na AWS para hospedar uma aplicação spring boot utilizando [Terraform](https://www.terraform.io/docs/index.html),  [Terragrunt](https://terragrunt.gruntwork.io/docs/), [Docker](https://docs.docker.com/), [Ansible](https://docs.ansible.com/) e [Jenkins](https://www.jenkins.io/sigs/docs/).
 Abaixo o desenho funcional da aplicação:
 
-![Aplicacao](images/cloudops-app.jpg)
+<p align="center">
+  <img src="images/cloudops-app.jpg" alt="Aplicação"/>
+</p>
 
 É uma aplicação java com [Spring boot](https://spring.io/projects/spring-boot), hospedada em container docker dentro de ec2, que recebe uma requisição http e retorna a mensagem: `#CloudOps :)`
 
@@ -11,7 +13,9 @@ Abaixo o desenho funcional da aplicação:
 
 Abaixo o desenho da arquitetura de infraestrutura construída para hospedar essa aplicação:
 
-![Infraestrutura](images/cloudops.jpg)
+<p align="center">
+  <img src="images/cloudops.jpg" alt="Infraestrutura"/>
+</p>
 
 Foi utilizado a infraestrutura da AWS para hospedar a aplicação informada anteriormente. Como é possivel perceber a infraestrutura foi desenvolvida dentro de uma vpc `10.0.0.0/16`com duas subnets públicas e duas subnets privadas, com Nat Gateway, ALB e cloudops-jenkins em subnet pública e apenas a aplicação dentro de duas ec2 com auto scaling, em subnet privada com saída para internet através do Nat Gateway. Foi criado uma zona privada chamada cloudops.infra.lab e um record alias app.cloudops.infra.lab apontado para o alb. 
 
@@ -28,7 +32,9 @@ O Terragrunt é um wrapper do terraform, que prover ferramentas extras para mant
 
 No projeto foi utilizado a seguinte estrutura do código terraform e terragrunt:
 
-![Terraform](images/terraform.png)
+<p align="center">
+  <img src="images/terraform.png" alt="Terraform"/>
+</p>
 
 Como é possível perceber existem 3 diretorios importantes para o desenvolvimento de um código reutilizável, dentro do diretório terraform :
 - Terraform Modules (terraform-modules): é o diretório onde é desenvolvido o módulo base para cada componentes da infraestrutura a ser provisionada. Neste projeto existem os módulos:
@@ -54,7 +60,9 @@ O ansible é a ferramenta de automação que automatiza o provisionamento de clo
 
 No projeto foi utilizado as seguinte estrutura do código ansible:
 
-![Ansible](images/ansible.png)
+<p align="center">
+  <img src="images/ansible.png" alt="Ansible"/>
+</p>
 
 - ansible: é o diretório raiz que armazena os demais diretórios do ansible, a playbook (local.yml) e o arquivo de configuração do ansible (ansible.cfg).
 - inventory: é o diretório que armazena os arquivos de configuração de inventário dinamico: `ec2.ini`, `ec2.py` e `hosts`.
@@ -71,7 +79,9 @@ No projeto foi utilizado as seguinte estrutura do código ansible:
 O jenkins foi utilizado a interface do Blue Ocean, que é na verdade uma nova experiencia de usuário projetado para utilizar com Jenkins Pipeline, mas ainda compatível com os modos Free Style.
 A pipeline foi desenvolvido através do próprio arquivo do jenkins, `Jenkinsfile`, que está armazenada no repositório da aplicação. As steps desta pipeline são:
 
-![Pipeline](images/cicd.png)
+<p align="center">
+  <img src="images/cicd.png" alt="Pipeline"/>
+</p>
 
 - Clone Repository: por mais que não mostre na imagem, a step é iniciada com o update do código da aplicação que será deployada. 
 - Update Ansible: essa step faz o update do código ansible, que será utilizado na step de deploy.
@@ -90,6 +100,26 @@ A pipeline foi desenvolvido através do próprio arquivo do jenkins, `Jenkinsfil
 
 Docker é um container software, que fornece uma camada de abstração e automação para virtualização de um sistema operacional, usando isolamento de recurso do kernel do linux. Segue o [link](https://docs.docker.com/) para mais informações.
 Para o projeto, a aplicação roda em container dentro da EC2.
+
+# Imagens Importantes
+
+## Sonar Report
+
+<p align="center">
+  <img src="images/sonar.png" alt="Sonar"/>
+</p>
+
+## Security (Aqua MicroScanner)
+
+<p align="center">
+  <img src="images/scann.png" alt="Aqua MicroScanner"/>
+</p>
+
+## Security (K6)
+
+<p align="center">
+  <img src="images/k6.png" alt="K6"/>
+</p>
 
 # Link para os Repositórios
 - [Aplicação](https://github.com/adriell/cloudops-app)
